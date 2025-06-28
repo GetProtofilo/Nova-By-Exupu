@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>InsightFlow – AI Notes</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InsightFlow – AI Notes Workspace</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>InsightFlow 🧠</h1>
-            <p>Your smart AI-powered notes app</p>
-        </header>
-        <main>
-            <form id="note-form">
-                <textarea id="note-input" placeholder="Type your note here..."></textarea>
-                <button type="submit">Save Note</button>
-            </form>
-            <div id="notes-container"></div>
-        </main>
-    </div>
-    <script src="script.js"></script>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h2>InsightFlow 🧠</h2>
+      <nav>
+        <a href="#">📝 All Notes</a>
+        <a href="#">⭐ Favorites</a>
+        <a href="#">⚙ Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>AI Notes</h1>
+      </header>
+
+      <section class="note-section">
+        <form id="note-form">
+          <textarea id="note-input" placeholder="Write your genius thought..."></textarea>
+          <button type="submit">💾 Save Note</button>
+        </form>
+        <div id="notes-container"></div>
+      </section>
+    </main>
+
+    <!-- 🧊 Optional 3D Element -->
+    <div class="orb"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
