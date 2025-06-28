@@ -36,3 +36,27 @@ form.addEventListener("submit", (e) => {
 });
 
 renderNotes();
+
+// Tab logic
+const navLinks = document.querySelectorAll(".nav-link");
+const tabs = document.querySelectorAll(".tab");
+const pageTitle = document.getElementById("page-title");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = link.dataset.tab;
+
+    navLinks.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+
+    tabs.forEach(tab => {
+      if (tab.id === `${target}-tab`) {
+        tab.classList.remove("hidden");
+        pageTitle.textContent = link.textContent.replace(/[^a-zA-Z ]/g, "");
+      } else {
+        tab.classList.add("hidden");
+      }
+    });
+  });
+});
