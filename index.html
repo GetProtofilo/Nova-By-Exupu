@@ -11,28 +11,35 @@
     <aside class="sidebar">
       <h2>InsightFlow 🧠</h2>
       <nav>
-        <a href="#">📓 All Notes</a>
-        <a href="#">⭐ Favorites</a>
-        <a href="#">⚙ Settings</a>
+        <a href="#" class="nav-link active" data-tab="notes">📓 All Notes</a>
+        <a href="#" class="nav-link" data-tab="favorites">⭐ Favorites</a>
+        <a href="#" class="nav-link" data-tab="settings">⚙ Settings</a>
       </nav>
     </aside>
 
     <main class="content">
       <header class="topbar">
-        <h1>AI Notes</h1>
+        <h1 id="page-title">AI Notes</h1>
       </header>
 
-      <section class="note-area">
+      <section id="notes-tab" class="tab">
         <form id="note-form">
           <textarea id="note-input" placeholder="Write your genius thought..."></textarea>
           <button type="submit">💾 Save Note</button>
         </form>
         <div id="notes-container"></div>
       </section>
+
+      <section id="favorites-tab" class="tab hidden">
+        <p class="info-msg">⭐ Your favorite notes will show up here. (Coming soon)</p>
+      </section>
+
+      <section id="settings-tab" class="tab hidden">
+        <p class="info-msg">⚙ Settings panel (Coming soon)</p>
+      </section>
     </main>
   </div>
 
-  <!-- Glowing 3D Orb -->
   <div class="orb"></div>
 
   <script src="script.js"></script>
