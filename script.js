@@ -9,19 +9,19 @@ function saveNotes() {
 }
 
 function getSummary(note) {
-  return "Summary: " + note.slice(0, 25) + "... (AI simulated)";
+  return "Summary: " + note.slice(0, 30) + "...";
 }
 
 function renderNotes() {
   notesContainer.innerHTML = "";
   notes.forEach((note) => {
-    const div = document.createElement("div");
-    div.className = "note";
-    div.innerHTML = `
+    const noteDiv = document.createElement("div");
+    noteDiv.className = "note";
+    noteDiv.innerHTML = `
       <div>${note}</div>
       <div class="summary">${getSummary(note)}</div>
     `;
-    notesContainer.appendChild(div);
+    notesContainer.appendChild(noteDiv);
   });
 }
 
@@ -30,9 +30,9 @@ form.addEventListener("submit", (e) => {
   const text = input.value.trim();
   if (!text) return;
   notes.push(text);
+  input.value = "";
   saveNotes();
   renderNotes();
-  input.value = "";
 });
 
 renderNotes();
