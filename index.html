@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exupu Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <audio id="bgMusic" loop autoplay>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1 class="fade-in">Hi, I'm Exupu</h1>
+    <p class="fade-in delay1">Creative Web & UI Designer | Developer | Animator</p>
+  </header>
+
+  <section class="projects fade-in-section">
+    <h2>My Work</h2>
+    <div class="cards">
+      <div class="card" onclick="openExample('ui')">
+        <h3>UI Design</h3>
+        <p>Interactive UI examples</p>
+      </div>
+      <div class="card" onclick="openExample('web')">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JS projects</p>
+      </div>
+      <div class="card" onclick="openExample('animations')">
+        <h3>Animations</h3>
+        <p>Cool animated effects</p>
+      </div>
+      <div class="card" onclick="openExample('sound')">
+        <h3>Sound Integration</h3>
+        <p>Background music & sound effects</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="exampleModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeExample()">&times;</span>
+      <div id="exampleContent"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Exupu. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
