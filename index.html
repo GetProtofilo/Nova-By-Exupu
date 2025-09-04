@@ -8,22 +8,97 @@
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at top, #1b0034, #000000);
+      background: radial-gradient(circle at top, #0a0016, #000000);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow: hidden;
     }
 
-    .auth-container {
+    /* Starfield */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    /* Auth wrapper */
+    .auth-wrapper {
+      display: flex;
+      flex-wrap: wrap;
       background: rgba(255,255,255,0.05);
       border-radius: 20px;
-      padding: 2rem;
-      width: 100%;
-      max-width: 420px;
+      width: 95%;
+      max-width: 900px;
+      overflow: hidden;
       box-shadow: 0 0 40px rgba(0,0,0,0.5);
       backdrop-filter: blur(15px);
+      z-index: 1;
+      position: relative;
+    }
+
+    /* Left panel */
+    .auth-info {
+      flex: 1;
+      min-width: 280px;
+      padding: 2rem;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    .welcome {
+      margin-top: 2rem;
+    }
+    .welcome h2 {
+      margin: 0 0 1rem;
+      font-size: 1.8rem;
+    }
+    .welcome ul {
+      padding-left: 1rem;
+      list-style: none;
+    }
+    .welcome ul li::before {
+      content: "✔";
+      margin-right: 0.5rem;
+      color: #00d4ff;
+    }
+
+    /* Right panel */
+    .auth-container {
+      flex: 1;
+      min-width: 280px;
+      padding: 2rem;
     }
 
     .tabs {
@@ -32,7 +107,6 @@
       margin-bottom: 1.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-
     .tab {
       flex: 1;
       text-align: center;
@@ -41,7 +115,6 @@
       font-weight: 500;
       transition: background 0.3s;
     }
-
     .tab.active {
       border-bottom: 2px solid #6d5dfc;
       color: #6d5dfc;
@@ -78,7 +151,7 @@
 
     .alt {
       text-align: center;
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
       font-size: 0.9rem;
     }
     .alt a {
@@ -88,36 +161,60 @@
   </style>
 </head>
 <body>
-  <div class="auth-container">
-    <div class="tabs">
-      <div class="tab active" data-tab="signin">Sign In</div>
-      <div class="tab" data-tab="create">Create Account</div>
-      <div class="tab" data-tab="reset">Reset</div>
+  <!-- Stars -->
+  <div class="stars"></div>
+
+  <!-- Auth box -->
+  <div class="auth-wrapper">
+    <!-- Left info -->
+    <div class="auth-info">
+      <div class="logo">
+        <img src="https://via.placeholder.com/32x32.png?text=K" alt="Kryzen Logo">
+        Kryzen
+      </div>
+      <div class="welcome">
+        <h2>Welcome back</h2>
+        <p>Secure, elegant, and fast. Sign in or create your account in seconds.</p>
+        <ul>
+          <li>Passwordless-ready design</li>
+          <li>A11y-first & responsive</li>
+          <li>Single-file · No deps</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Sign In -->
-    <form id="signin" class="active">
-      <input type="text" placeholder="Email or Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit" class="btn">Sign In</button>
-      <div class="alt"><a href="#" onclick="switchTab('reset')">Forgot password?</a></div>
-    </form>
+    <!-- Right forms -->
+    <div class="auth-container">
+      <div class="tabs">
+        <div class="tab active" data-tab="signin">Sign In</div>
+        <div class="tab" data-tab="create">Create Account</div>
+        <div class="tab" data-tab="reset">Reset</div>
+      </div>
 
-    <!-- Create Account -->
-    <form id="create">
-      <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password (10+ chars)" required>
-      <button type="submit" class="btn">Create Account</button>
-      <div class="alt">Already have an account? <a href="#" onclick="switchTab('signin')">Sign in</a></div>
-    </form>
+      <!-- Sign In -->
+      <form id="signin" class="active">
+        <input type="text" placeholder="Email or Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn">Sign In</button>
+        <div class="alt"><a href="#" onclick="switchTab('reset')">Forgot password?</a></div>
+      </form>
 
-    <!-- Reset -->
-    <form id="reset">
-      <input type="email" placeholder="Your Email" required>
-      <button type="submit" class="btn">Send reset link</button>
-      <div class="alt">Remembered? <a href="#" onclick="switchTab('signin')">Back to sign in</a></div>
-    </form>
+      <!-- Create Account -->
+      <form id="create">
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password (10+ chars)" required>
+        <button type="submit" class="btn">Create Account</button>
+        <div class="alt">Already have an account? <a href="#" onclick="switchTab('signin')">Sign in</a></div>
+      </form>
+
+      <!-- Reset -->
+      <form id="reset">
+        <input type="email" placeholder="Your Email" required>
+        <button type="submit" class="btn">Send reset link</button>
+        <div class="alt">Remembered? <a href="#" onclick="switchTab('signin')">Back to sign in</a></div>
+      </form>
+    </div>
   </div>
 
   <script>
@@ -136,6 +233,17 @@
 
       document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add("active");
       document.getElementById(tabName).classList.add("active");
+    }
+
+    // Generate stars
+    const starsContainer = document.querySelector(".stars");
+    for (let i = 0; i < 80; i++) {
+      let star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+      starsContainer.appendChild(star);
     }
   </script>
 </body>
