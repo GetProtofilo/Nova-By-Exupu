@@ -68,14 +68,15 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.3rem;
+      gap: 0.7rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
     .logo img {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
+      box-shadow: 0 0 12px #6d5dfc; /* glowing logo */
     }
     .welcome {
       margin-top: 2rem;
@@ -94,7 +95,7 @@
       color: #00d4ff;
     }
 
-    /* Right panel (Login) */
+    /* Right panel (Login only) */
     .auth-container {
       flex: 1;
       min-width: 260px;
@@ -114,12 +115,22 @@
     input[type="password"] {
       padding: 0.9rem;
       border-radius: 10px;
-      border: none;
+      border: 1px solid #333;
       width: 100%;
       outline: none;
       font-size: 1rem;
-      color: black;              /* black text inside */
-      background: #fff;          /* white input background */
+      color: #fff;          /* white text */
+      background: #000;     /* black background */
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      border: 1px solid #6d5dfc;
+      box-shadow: 0 0 10px rgba(109, 93, 252, 0.6);
+    }
+
+    input::placeholder {
+      color: #888;          /* softer gray placeholder */
     }
 
     .remember-me {
@@ -143,9 +154,12 @@
       color: #fff;
       font-size: 1rem;
       font-weight: 600;
-      transition: opacity 0.3s;
+      transition: opacity 0.3s, transform 0.2s;
     }
-    .btn:hover { opacity: 0.85; }
+    .btn:hover { 
+      opacity: 0.9; 
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -157,7 +171,8 @@
     <!-- Left info -->
     <div class="auth-info">
       <div class="logo">
-        <img src="https://via.placeholder.com/32x32.png?text=K" alt="Kryzen Logo">
+        <!-- Replace this logo src with your real one -->
+        <img src="https://dummyimage.com/40x40/6d5dfc/ffffff&text=K" alt="Kryzen Logo">
         Kryzen
       </div>
       <div class="welcome">
@@ -171,7 +186,7 @@
       </div>
     </div>
 
-    <!-- Right form -->
+    <!-- Right form (Login only) -->
     <div class="auth-container">
       <form>
         <input type="text" placeholder="Email or Username" required>
